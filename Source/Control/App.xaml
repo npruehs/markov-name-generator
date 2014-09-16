@@ -1,4 +1,4 @@
-﻿<Application x:Class = "MarkovNameGenerator.App"
+﻿<Application x:Class = "MarkovNameGenerator.Control.App"
              xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri = "View\MainWindow.xaml"
