@@ -2,10 +2,10 @@
         xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:control = "clr-namespace:MarkovNameGenerator.Control"
-        Title = "MainWindow" Height = "320" Width = "640"
+        Title = "MainWindow" Height = "230" Width = "640"
         Icon = "/MarkovNameGenerator;component/Resources/Icon_slashgames_RGB.ico">
-    <StackPanel>
-        <Menu>
+    <DockPanel>
+        <Menu DockPanel.Dock = "Top">
             <MenuItem Header = "_File">
                 <MenuItem Command = "Open" Header = "Load Sample Data..."></MenuItem>
                 <MenuItem Command = "SaveAs" Header = "Save Sample Data..."></MenuItem>
@@ -13,27 +13,34 @@
                 <MenuItem Command = "Close" Header = "_Quit"></MenuItem>
             </MenuItem>
         </Menu>
-        <Button Name = "Generate" Command = "New" FontSize = "36">Generate!</Button>
-        <TextBox IsReadOnly = "True" Name = "LastName" HorizontalContentAlignment = "Center" FontSize = "36"
-                 Width = "640">
+        <Button DockPanel.Dock = "Top" Name = "Generate" Command = "New" FontSize = "36">Generate!</Button>
+        <TextBox DockPanel.Dock = "Top" IsReadOnly = "True" Name = "LastName" HorizontalContentAlignment = "Center"
+                 FontSize = "36">
         </TextBox>
-        <StackPanel Orientation = "Horizontal">
-            <Button DockPanel.Dock = "Left" Name = "Accept" Command = "control:EvaluationCommands.AcceptName"
-                    FontSize = "36" Width = "320">
+        <Grid DockPanel.Dock = "Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "*"></ColumnDefinition>
+                <ColumnDefinition Width = "*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column = "0" Grid.Row = "0" Name = "Accept" Command = "control:EvaluationCommands.AcceptName"
+                    FontSize = "36">
                 Accept
             </Button>
-            <Button DockPanel.Dock = "Left" Name = "Decline" Command = "control:EvaluationCommands.RejectName"
-                    FontSize = "36" Width = "320">
+            <Button Grid.Column = "1" Grid.Row = "0" Name = "Decline" Command = "control:EvaluationCommands.RejectName"
+                    FontSize = "36">
                 Reject
             </Button>
-        </StackPanel>
+        </Grid>
 
-        <StatusBar>
+        <StatusBar DockPanel.Dock = "Bottom">
             <StatusBarItem>
                 <TextBlock Name = "StatusText"></TextBlock>
             </StatusBarItem>
         </StatusBar>
-    </StackPanel>
+    </DockPanel>
 
     <Window.CommandBindings>
         <CommandBinding Command = "New" CanExecute = "CanExecuteNew" Executed = "ExecutedNew"></CommandBinding>
